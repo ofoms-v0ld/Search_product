@@ -15,12 +15,12 @@ public class ProdTest {
 	    @Before
 	    public void setUp() throws Exception {
 	        Prod productJpa = new Prod();
-	        productJpa.setCat_id(1);
+	       // productJpa.setCat_id(1);
 	        productJpa.setName("Test1");
 	        productJpa.setPrice(99.99);
 
 	        Prod productHibernate = new Prod();
-	        productJpa.setCat_id(2);
+	        //productJpa.setCat_id(2);
 	        productJpa.setName("Test2");
 	        productJpa.setPrice(9.99);
 

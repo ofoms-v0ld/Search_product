@@ -2,9 +2,16 @@ package task.from.intelligence.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
 
 @Entity
 public class Prod  implements Serializable {
@@ -16,11 +23,16 @@ public class Prod  implements Serializable {
 
 
 	@Id
-    @GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
     private Integer id;
 
     
-    private Integer cat_id;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cat_id", referencedColumnName="ID")
+	private Cat cat_id;
+    
     private String name;
     private Double price;
     
@@ -29,12 +41,6 @@ public class Prod  implements Serializable {
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	public Integer getCat_id() {
-		return cat_id;
-	}
-	public void setCat_id(Integer cat_id) {
-		this.cat_id = cat_id;
 	}
 	public String getName() {
 		return name;

@@ -13,7 +13,7 @@
 		</li>
 		<li>
 			<ul id="features" class="sub-menu collapse ${fn:contains(pageContext.request.requestURI,'features') ? 'in' : ''}">
-				<li><a href="${pageContext.request.contextPath}/search-service/search.jsp">Search</a></li>
+				<li><a href="${pageContext.request.contextPath}/search-service/test">Search</a></li>
 				<li><a href="${pageContext.request.contextPath}/features/export-chart.jsp">Export Chart as Image</a></li>
 				<li><a href="${pageContext.request.contextPath}/features/event-handling.jsp">Event Handling</a></li>
 				<li><a href="${pageContext.request.contextPath}/features/log-axis.jsp">Logarithmic Axis</a></li>
