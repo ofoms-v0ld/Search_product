@@ -80,7 +80,7 @@
 			<h1>${param.pageTitle}</h1>
 
 			<div class="row">
-				<div id="content">
+				<div id="content" class="col-md-8 col-md-offset-1 col-xs-12">
 					${param.content}
 				</div>
 			</div>

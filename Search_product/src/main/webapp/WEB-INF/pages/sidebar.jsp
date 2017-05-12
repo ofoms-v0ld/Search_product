@@ -13,15 +13,8 @@
 		</li>
 		<li>
 			<ul id="features" class="sub-menu collapse ${fn:contains(pageContext.request.requestURI,'features') ? 'in' : ''}">
-				<li><a href="${pageContext.request.contextPath}/search-service/test">Search</a></li>
-				<li><a href="${pageContext.request.contextPath}/features/export-chart.jsp">Export Chart as Image</a></li>
-				<li><a href="${pageContext.request.contextPath}/features/event-handling.jsp">Event Handling</a></li>
-				<li><a href="${pageContext.request.contextPath}/features/log-axis.jsp">Logarithmic Axis</a></li>
-				<li><a href="${pageContext.request.contextPath}/features/date-time.jsp">Date-Time Axis</a></li>
-				<li><a href="${pageContext.request.contextPath}/features/reverse-axis.jsp">Reverse Axis</a></li>
-				<li><a href="${pageContext.request.contextPath}/features/striplines.jsp">StripLines</a></li>
-				<li><a href="${pageContext.request.contextPath}/features/multiple-y-axis.jsp">Multiple Y Axis</a></li>
-				<li><a href="${pageContext.request.contextPath}/features/multi-series-chart.jsp">Multiseries Charts</a></li>
+				<li><a href="${pageContext.request.contextPath}/search-service/search">Search</a></li>
+				<li><a href="${pageContext.request.contextPath}/search-service/search.jsp">Export Chart as Image</a></li>
 			</ul>
 		</li>
 		<li role="separator" class="divider"></li>

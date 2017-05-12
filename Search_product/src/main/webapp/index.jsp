@@ -11,7 +11,7 @@
 <body>
 	<jsp:include page="/WEB-INF/pages/template.jsp">
 		<jsp:param value="Hello my future employer!" name="pageTitle"/>
-		<jsp:param value="<div id='chartContainer'/>" name="content"/>
+		<jsp:param value="<div id='chartContainer'></div>" name="content"/>
 	</jsp:include>
 </body>
 </html>
