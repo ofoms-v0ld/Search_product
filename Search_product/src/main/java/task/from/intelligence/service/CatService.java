@@ -17,4 +17,6 @@ public interface CatService {
 	public void removeCat(int id);
 	
 	public List<Prod_pojo> getAll_criteria();
+	
+	public List<Prod_pojo> seacrh(Prod_pojo p);
 }

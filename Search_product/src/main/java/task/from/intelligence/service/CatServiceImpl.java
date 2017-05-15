@@ -43,4 +43,9 @@ public class CatServiceImpl implements CatService {
 		return catDAOImpl.getAll();
 	}
 
+	@Override
+	public List<Prod_pojo> seacrh(Prod_pojo p) {
+		return catDAOImpl.search(p);
+	}
+
 }

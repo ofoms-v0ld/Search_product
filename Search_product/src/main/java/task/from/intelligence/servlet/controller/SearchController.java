@@ -9,13 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import task.from.intelligence.bean.validation.SearchFormValidationBean;
-import task.from.intelligence.dao.CatDAO;
-import task.from.intelligence.dao.CatDAOImpl;
-import task.from.intelligence.entity.Cat;
-import task.from.intelligence.entity.Prod;
 import task.from.intelligence.pojo.Prod_pojo;
 import task.from.intelligence.service.CatService;
 import task.from.intelligence.service.CatServiceImpl;
@@ -28,14 +22,6 @@ public class SearchController  extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
-	    // Clear any old bean and create a new one in session keeping data from
-	    // parameters in the request.
-		HttpSession session = request.getSession();
-	    session.removeAttribute("searchFormValidationBean");
-		SearchFormValidationBean searchFormValidationBean = new SearchFormValidationBean();
-	    session.setAttribute("searchFormValidationBean", searchFormValidationBean);
 
 	    // Get submitted fields
 	    String cat = request.getParameter("cat");
@@ -53,16 +39,14 @@ public class SearchController  extends HttpServlet {
 	    	(null == salary_max || salary_max.length() == 0)
 	       )
 	        validationEx.addMessage("At least one field must be filled", "msgMandatoryField");
-	    else
-	    	searchFormValidationBean.setMandatoryTextField(cat);
+	    
 
 	    // Throw exeption (if being) and pass to Get
 	    ValidationException fd = validationEx.raise();
 	    if(fd != null) {request.setAttribute("validationException", fd); doGet(request,response);}
 	    
 	    else{
-	    		
-				CatDAO dao = new CatDAOImpl();
+	    		CatService catService = new CatServiceImpl();
 				Prod_pojo pj = new Prod_pojo();
 				
 				pj.setCatname(cat);
@@ -70,18 +54,8 @@ public class SearchController  extends HttpServlet {
 				pj.setPrice_max(salary_max);
 				pj.setPrice_min(salary_min);
 				
-				/*System.out.println(dao.search(pj)+"/n"+pj.getProdname());
-				
-				
-				
-				
-				CatService catService = new CatServiceImpl();
-				Cat cat_model = new Cat();
-				List<Cat> listcat = catService.findAllCat();*/
-				
 		
-				//List<Employee> allEmployees = employeeService.findAllEmployees();
-				request.setAttribute("resultList", dao.search(pj));
+				request.setAttribute("resultList", catService.seacrh(pj));
 				RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
 				dispatcher.forward(request, response);
 	    }

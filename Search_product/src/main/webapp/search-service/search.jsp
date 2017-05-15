@@ -2,14 +2,9 @@
          contentType="text/html"
          isErrorPage="true"
 %>
-<%@ page import="java.util.*" %>
-<%@page import="task.from.intelligence.entity.Cat"%>
 <%@page import="task.from.intelligence.pojo.Prod_pojo"%>
-<%@page import="task.from.intelligence.entity.Prod"%>
-<%@page import="task.from.intelligence.bean.validation.SearchFormValidationBean"%>
 <%@page import="task.from.intelligence.servlet.validation.ValidationException"%>
 <%@page import="java.util.List"%>
-<jsp:useBean id="searchFormValidationBean" scope="session" class="task.from.intelligence.bean.validation.SearchFormValidationBean" />
 
 <%
 	String msgMandatoryField = "";

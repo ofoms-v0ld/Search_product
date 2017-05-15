@@ -1,19 +1,10 @@
 package task.from.intelligence.pojo;
 
 
-
-import com.google.gson.Gson;
-
-import task.from.intelligence.entity.Cat;
-
 public class Prod_pojo {
 
     public Prod_pojo() {
 		
-	}
-    
-    public Prod_pojo(String name) {
-		this.prodname = name;
 	}
     
     public Prod_pojo(Integer prodid, String catname, String prodname, Double prodprice) {

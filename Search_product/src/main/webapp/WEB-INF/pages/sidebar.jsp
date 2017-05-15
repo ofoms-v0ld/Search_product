@@ -14,7 +14,6 @@
 		<li>
 			<ul id="features" class="sub-menu collapse ${fn:contains(pageContext.request.requestURI,'features') ? 'in' : ''}">
 				<li><a href="${pageContext.request.contextPath}/search-service/search">Search</a></li>
-				<li><a href="${pageContext.request.contextPath}/search-service/search.jsp">Export Chart as Image</a></li>
 			</ul>
 		</li>
 		<li role="separator" class="divider"></li>
