@@ -4,6 +4,7 @@ import java.util.List;
 
 import task.from.intelligence.dao.CatDAOImpl;
 import task.from.intelligence.entity.Cat;
+import task.from.intelligence.pojo.Prod_pojo;
 
 
 public class CatServiceImpl implements CatService {
@@ -35,6 +36,11 @@ public class CatServiceImpl implements CatService {
 	public void removeCat(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public List<Prod_pojo> getAll_criteria(){
+		return catDAOImpl.getAll();
 	}
 
 }

@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import task.from.intelligence.bean.validation.SearchFormValidationBean;
+import task.from.intelligence.dao.CatDAO;
+import task.from.intelligence.dao.CatDAOImpl;
 import task.from.intelligence.entity.Cat;
+import task.from.intelligence.entity.Prod;
+import task.from.intelligence.pojo.Prod_pojo;
 import task.from.intelligence.service.CatService;
 import task.from.intelligence.service.CatServiceImpl;
 import task.from.intelligence.servlet.validation.ValidationException;
@@ -52,41 +56,51 @@ public class SearchController  extends HttpServlet {
 	    else
 	    	searchFormValidationBean.setMandatoryTextField(cat);
 
-	    // if any submitted data has been rejected, bounce back...
+	    // Throw exeption (if being) and pass to Get
 	    ValidationException fd = validationEx.raise();
-	    if(fd != null) throw new ServletException(fd);
-
-	    //make the bean persistent
-	    searchFormValidationBean.store();
-
-	    // the sampleBean is now persistent, we do not need it in session.
-	    session.removeAttribute("searchFormValidationBean");
-
+	    if(fd != null) {request.setAttribute("validationException", fd); doGet(request,response);}
+	    
+	    else{
+	    		
+				CatDAO dao = new CatDAOImpl();
+				Prod_pojo pj = new Prod_pojo();
+				
+				pj.setCatname(cat);
+				pj.setProdname(product);
+				pj.setPrice_max(salary_max);
+				pj.setPrice_min(salary_min);
+				
+				/*System.out.println(dao.search(pj)+"/n"+pj.getProdname());
+				
+				
+				
+				
+				CatService catService = new CatServiceImpl();
+				Cat cat_model = new Cat();
+				List<Cat> listcat = catService.findAllCat();*/
+				
 		
-		
-
-		CatService catService = new CatServiceImpl();
-		Cat cat_model = new Cat();
-		List<Cat> listcat = catService.findAllCat();
-		
-		System.out.println("TEST "+listcat);
-
-		//List<Employee> allEmployees = employeeService.findAllEmployees();
-		request.setAttribute("resultList", listcat);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
-		dispatcher.forward(request, response);
+				//List<Employee> allEmployees = employeeService.findAllEmployees();
+				request.setAttribute("resultList", dao.search(pj));
+				RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
+				dispatcher.forward(request, response);
+	    }
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		CatService catService = new CatServiceImpl();
-		List<Cat> listcat = catService.findAllCat();
-		
+		List<Prod_pojo> listcat = catService.getAll_criteria();
 		request.setAttribute("resultList", listcat);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
-		dispatcher.forward(request, response);
 		
+		ValidationException ve = (ValidationException)request.getAttribute("validationException");
+		//if was to 'redirect' through doGet(request,response) from post i.e. being exception
+		if(null != ve) {throw new ServletException(ve);}
+		else{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
+			dispatcher.forward(request, response);
+		}
 		
 	}
 }
