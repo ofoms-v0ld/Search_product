@@ -10,9 +10,9 @@
 	<jsp:include page="/WEB-INF/pages/template.jsp">
 		<jsp:param value="Hello my future employer!" name="pageTitle"/>
 		<jsp:param value="<div id='chartContainer'>
-		<div style='margin-left:30px;'><p><h6>1. Check out in menu Search service -> Search</h6></p>
+		<div style='margin-left:30px;'><p><h6>1. Check out Search service menu -> Search</h6></p>
 		<p><h6>2. Test service</h6></p></div><br><br>
-		<div style='margin-left:30px;'>Used techology</div>
+		<div style='margin-left:30px;'>Used technology</div>
 		<ol>
 			<li>Servlet, JSP engine search logic</li>
 			<li>JS for menu (sidebar)</li>
@@ -22,6 +22,8 @@
 			<li>Tomcat 8</li>
 			<li>JPA Hibernate, Hiberate criteria</li>
 			<li>H2 Embed</li>
+			
+			<li>https://github.com/pylypiv/Search_product</li>
 		</ol>
 		
 		</div>" name="content"/>
